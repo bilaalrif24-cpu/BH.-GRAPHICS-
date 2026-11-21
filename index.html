@@ -1,0 +1,656 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BH GRAPHICS | Creative Digital Studio</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --blue: #1769ff;
+  --cyan: #00c8ff;
+  --bg: #050914;
+  --glass: rgba(255,255,255,0.07);
+  --border: rgba(255,255,255,0.14);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: white;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: #075dff;
+  filter: blur(180px);
+  opacity: .28;
+  top: -180px;
+  left: -150px;
+  z-index: -1;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  width: 450px;
+  height: 450px;
+  background: #00bfff;
+  filter: blur(190px);
+  opacity: .15;
+  bottom: -180px;
+  right: -120px;
+  z-index: -1;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: 90%;
+  max-width: 1150px;
+  margin: auto;
+}
+
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 15px 45px rgba(0,0,0,.2);
+}
+
+/* NAVIGATION */
+
+header {
+  position: fixed;
+  top: 15px;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+nav {
+  width: 90%;
+  max-width: 1150px;
+  margin: auto;
+  padding: 15px 23px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.logo span {
+  color: var(--blue);
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 13px;
+  color: #c5cddd;
+  transition: .3s;
+}
+
+.nav-links a:hover {
+  color: var(--cyan);
+}
+
+.nav-btn, .btn {
+  display: inline-block;
+  background: linear-gradient(120deg, #1769ff, #00bfff);
+  padding: 13px 23px;
+  border-radius: 12px;
+  color: white;
+  font-weight: 700;
+  transition: .3s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover, .nav-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px #1769ff66;
+}
+
+.menu-btn {
+  display: none;
+  font-size: 25px;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 150px 0 80px;
+}
+
+.hero-content {
+  max-width: 750px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 9px 17px;
+  border-radius: 30px;
+  color: #75caff;
+  font-size: 12px;
+  margin-bottom: 25px;
+}
+
+.hero h1 {
+  font-size: clamp(45px, 8vw, 85px);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -4px;
+}
+
+.hero h1 span {
+  background: linear-gradient(90deg, #1769ff, #00d4ff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  color: #aab5c9;
+  line-height: 1.8;
+  max-width: 560px;
+  margin: 25px 0 32px;
+  font-size: 15px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-outline {
+  border: 1px solid var(--border);
+  padding: 13px 23px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: .3s;
+}
+
+.btn-outline:hover {
+  background: var(--glass);
+  border-color: var(--cyan);
+}
+
+/* SECTIONS */
+
+section:not(.hero) {
+  padding: 95px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+.section-title small {
+  color: var(--cyan);
+  font-weight: 700;
+  letter-spacing: 3px;
+  font-size: 11px;
+}
+
+.section-title h2 {
+  font-size: clamp(30px, 5vw, 45px);
+  margin-top: 15px;
+  font-weight: 800;
+}
+
+.section-title p {
+  color: #9daac0;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+/* SERVICES */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.service-card {
+  padding: 32px;
+  border-radius: 20px;
+  transition: .35s;
+}
+
+.service-card:hover {
+  transform: translateY(-9px);
+  border-color: #1769ff;
+  box-shadow: 0 15px 35px #1769ff20;
+}
+
+.service-icon {
+  width: 55px;
+  height: 55px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  background: #1769ff25;
+  color: var(--cyan);
+  font-size: 25px;
+  margin-bottom: 23px;
+}
+
+.service-card h3 {
+  font-size: 19px;
+  margin-bottom: 13px;
+}
+
+.service-card p {
+  font-size: 13px;
+  color: #aab5c9;
+  line-height: 1.8;
+}
+
+/* WHY CHOOSE US */
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.why-card {
+  padding: 26px;
+  border-radius: 17px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.check {
+  color: var(--cyan);
+  font-size: 25px;
+}
+
+.why-card h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.why-card p {
+  color: #aab5c9;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* CONTACT */
+
+.contact-box {
+  max-width: 700px;
+  margin: auto;
+  padding: 40px;
+  border-radius: 25px;
+}
+
+.contact-box input,
+.contact-box textarea {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 17px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: white;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.contact-box input:focus,
+.contact-box textarea:focus {
+  border-color: var(--blue);
+}
+
+.contact-box textarea {
+  height: 130px;
+  resize: vertical;
+}
+
+.contact-box button {
+  width: 100%;
+  font-size: 15px;
+}
+
+.contact-info {
+  text-align: center;
+  margin-top: 25px;
+  color: #aab5c9;
+  font-size: 13px;
+  line-height: 2;
+}
+
+/* FOOTER */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 30px 0;
+  text-align: center;
+  color: #8b98ac;
+  font-size: 12px;
+}
+
+footer strong {
+  color: white;
+}
+
+/* MOBILE */
+
+@media(max-width: 768px) {
+  .menu-btn {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 75px;
+    left: 5%;
+    width: 90%;
+    padding: 25px;
+    border-radius: 17px;
+    background: #101a30;
+    border: 1px solid var(--border);
+    flex-direction: column;
+    gap: 23px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-btn {
+    display: none;
+  }
+
+  .hero h1 {
+    letter-spacing: -2px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-box {
+    padding: 23px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<header>
+  <nav class="glass">
+    <a href="#hero" class="logo">BH <span>GRAPHICS.</span></a>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#hero">Home</a>
+      <a href="#services">Services</a>
+      <a href="#why">Why Choose Us</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <a href="#contact" class="nav-btn">Let's Talk ↗</a>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-content">
+
+      <div class="tag glass">✦ CREATIVE DIGITAL STUDIO</div>
+
+      <h1>
+        Build Your<br>
+        Digital <span>Future.</span>
+      </h1>
+
+      <p>
+        Welcome to BH GRAPHICS. We create modern,
+        responsive and professional websites that
+        help your business stand out in the digital world.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#services" class="btn">Explore Services ↗</a>
+        <a href="#contact" class="btn-outline">Contact Us</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+
+    <div class="section-title">
+      <small>WHAT WE DO</small>
+      <h2>Our Services</h2>
+      <p>Creative digital solutions for your business.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card glass">
+        <div class="service-icon">🌐</div>
+        <h3>Business Websites</h3>
+        <p>
+          Professional websites that showcase your
+          business, products and services.
+        </p>
+      </div>
+
+      <div class="service-card glass">
+        <div class="service-icon">🛒</div>
+        <h3>E-Commerce Websites</h3>
+        <p>
+          Modern online shopping experiences to
+          display and sell your products.
+        </p>
+      </div>
+
+      <div class="service-card glass">
+        <div class="service-icon">💻</div>
+        <h3>Portfolio Websites</h3>
+        <p>
+          Stylish personal websites to present
+          your skills, projects and achievements.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why">
+  <div class="container">
+
+    <div class="section-title">
+      <small>THE BH DIFFERENCE</small>
+      <h2>Why Choose Us?</h2>
+      <p>Your vision deserves a professional digital experience.</p>
+    </div>
+
+    <div class="why-grid">
+
+      <div class="why-card glass">
+        <div class="check">✦</div>
+        <div>
+          <h3>Modern Design</h3>
+          <p>Clean, beautiful and professional website designs.</p>
+        </div>
+      </div>
+
+      <div class="why-card glass">
+        <div class="check">⚡</div>
+        <div>
+          <h3>Fast Performance</h3>
+          <p>Optimized experiences with smooth navigation.</p>
+        </div>
+      </div>
+
+      <div class="why-card glass">
+        <div class="check">📱</div>
+        <div>
+          <h3>Mobile Responsive</h3>
+          <p>Websites designed for phones, tablets and computers.</p>
+        </div>
+      </div>
+
+      <div class="why-card glass">
+        <div class="check">🛡️</div>
+        <div>
+          <h3>Reliable Support</h3>
+          <p>Support to help you with your website project.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+
+    <div class="section-title">
+      <small>LET'S WORK TOGETHER</small>
+      <h2>Start Your Project</h2>
+      <p>Have an idea? Let's turn it into reality.</p>
+    </div>
+
+    <div class="contact-box glass">
+      <form id="contactForm">
+
+        <input type="text" id="name"
+          placeholder="Your Name" required>
+
+        <input type="email" id="email"
+          placeholder="Your Email" required>
+
+        <input type="text" id="subject"
+          placeholder="Project Type" required>
+
+        <textarea id="message"
+          placeholder="Tell us about your project..."
+          required></textarea>
+
+        <button type="submit" class="btn">
+          Send Message ↗
+        </button>
+
+      </form>
+
+      <div class="contact-info">
+        <p>✦ BH GRAPHICS</p>
+        <p>Your Vision • Our Creation</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <strong>BH GRAPHICS</strong>
+    <p>© 2026 BH GRAPHICS. All Rights Reserved.</p>
+    <p>Designed to Stand Out. ✦</p>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById("navLinks")
+    .classList.toggle("active");
+}
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    document.getElementById("navLinks")
+      .classList.remove("active");
+  });
+});
+
+// Contact form demo
+document.getElementById("contactForm")
+  .addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const subject = document.getElementById("subject").value;
+    const message = document.getElementById("message").value;
+
+    const text = `Hello BH GRAPHICS!
+Name: ${name}
+Email: ${email}
+Project: ${subject}
+Message: ${message}`;
+
+    // Replace with your WhatsApp number.
+    const whatsappNumber = "94771234567";
+
+    window.open(
+      "https://wa.me/" + whatsappNumber +
+      "?text=" + encodeURIComponent(text),
+      "_blank"
+    );
+  });
+</script>
+
+</body>
+</html>
